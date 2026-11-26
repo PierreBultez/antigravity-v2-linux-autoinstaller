@@ -106,7 +106,7 @@ Any Linux distribution that meets the requirements above should work, because th
 
 | Distribution | Minimum version | Status |
 | --- | --- | --- |
-| <img src="https://img.shields.io/badge/-Ubuntu-E95420?logo=ubuntu&logoColor=white" alt=""> Ubuntu and derivatives (Kubuntu, Xubuntu, Pop!_OS, Linux Mint, Zorin, elementary) | 18.04 / Mint 19 | ✅ Tested in CI (Ubuntu 24.04, x86_64 and arm64). AppArmor sandbox profile on 23.10+ |
+| <img src="https://img.shields.io/badge/-Ubuntu-E95420?logo=ubuntu&logoColor=white" alt=""> Ubuntu and derivatives (Kubuntu, Xubuntu, Pop!_OS, Linux Mint, Zorin, elementary) | 18.04 / Mint 19 | ✅ Tested on a real install: Ubuntu 26.10, GNOME on Wayland, x86_64 (app, sign-in, icon). Installer tested in CI on Ubuntu 24.04, x86_64 and arm64. AppArmor sandbox profile on 23.10+ |
 | <img src="https://img.shields.io/badge/-Debian-A81D33?logo=debian&logoColor=white" alt=""> Debian | 10 (buster) | 🟢 Should work |
 | <img src="https://img.shields.io/badge/-Fedora-51A2DA?logo=fedora&logoColor=white" alt=""> Fedora, RHEL, Rocky, AlmaLinux | Fedora 27 / RHEL 8 | 🟢 Should work |
 | <img src="https://img.shields.io/badge/-Arch-1793D1?logo=archlinux&logoColor=white" alt=""> Arch, Manjaro, EndeavourOS | Rolling | 🟢 Should work |

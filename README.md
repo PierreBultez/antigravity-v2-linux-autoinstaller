@@ -87,7 +87,7 @@ Options: `--system` (default) / `--user`, `-y` (no questions), `-f` (reinstall, 
 | C library | glibc 2.26 or newer | What Google's binaries are linked against. musl-based distributions (Alpine) are not supported |
 | Desktop | A graphical session (GNOME, KDE Plasma, Xfce, Cinnamon…), X11 or Wayland | Antigravity is a desktop app (Electron); it needs the usual desktop libraries: GTK 3, NSS, ALSA, libgbm… |
 | Shell and tools | `bash` 4.3+, `curl`, `tar`, `gzip`, `sed`, `grep` | Present on virtually every distribution |
-| Disk | ~550 MB for the app, ~600 MB more for the IDE | Plus about 250 MB, briefly, during an install or update |
+| Disk | ~550 MB for the app, ~600 MB more for the IDE | An update briefly needs room for a second copy plus the download (~800 MB for the app) |
 | Rights | `sudo` for a system install | Not needed with `--user` (except once for the AppArmor profile on Ubuntu 23.10+) |
 
 Optional, used when present:

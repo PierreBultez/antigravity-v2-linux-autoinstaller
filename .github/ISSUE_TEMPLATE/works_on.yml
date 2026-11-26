@@ -1,0 +1,33 @@
+name: Test report
+description: Tell us it works (or not) on your distribution
+labels: [test report]
+body:
+  - type: input
+    id: distro
+    attributes:
+      label: Distribution and version
+      description: For example "Debian 12" or "Arch (rolling, 2026-11)".
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options: [Everything works, Works with some issues, Does not work]
+    validations:
+      required: true
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: What you tried
+      options:
+        - label: Install
+        - label: The app starts from the menu
+        - label: Google sign-in comes back to the app
+        - label: Update
+        - label: Uninstall
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything worth knowing (desktop, X11/Wayland, errors…).

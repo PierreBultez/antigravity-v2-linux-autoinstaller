@@ -1,0 +1,47 @@
+name: Bug report
+description: Something went wrong while installing, updating or running Antigravity
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you ran, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Command output
+      description: The full output of the command that failed.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: antigravity-installer status
+      description: Output of `antigravity-installer status` (if the installer got that far).
+      render: shell
+  - type: input
+    id: distro
+    attributes:
+      label: Distribution and version
+      description: For example "Ubuntu 24.04" or "Fedora 41". `cat /etc/os-release` tells you.
+    validations:
+      required: true
+  - type: dropdown
+    id: desktop
+    attributes:
+      label: Desktop
+      options: [GNOME, KDE Plasma, Xfce, Cinnamon, MATE, Other]
+  - type: dropdown
+    id: arch
+    attributes:
+      label: CPU
+      options: [x86_64, arm64]
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Install mode
+      options: [System (default), User (--user)]

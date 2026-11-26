@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="Antigravity v2 Linux auto-installer: a package floats out of a terminal running the one-line installer">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070b1a"/>
+      <stop offset="1" stop-color="#121a3a"/>
+    </linearGradient>
+    <linearGradient id="arc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34a853"/>
+      <stop offset="0.35" stop-color="#4285f4"/>
+      <stop offset="0.7" stop-color="#a142f4"/>
+      <stop offset="1" stop-color="#ea4335"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6c453"/>
+      <stop offset="1" stop-color="#e0902d"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#7aa7ff" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#7aa7ff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4285f4" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#4285f4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="420" fill="url(#sky)"/>
+
+  <!-- stars -->
+  <g fill="#ffffff">
+    <circle cx="60" cy="40" r="1.6" opacity=".8"/><circle cx="140" cy="110" r="1.1" opacity=".6"/>
+    <circle cx="230" cy="60" r="1.4" opacity=".7"/><circle cx="330" cy="150" r="1" opacity=".5"/>
+    <circle cx="420" cy="35" r="1.8" opacity=".9"/><circle cx="520" cy="95" r="1.2" opacity=".6"/>
+    <circle cx="610" cy="30" r="1" opacity=".5"/><circle cx="690" cy="120" r="1.5" opacity=".8"/>
+    <circle cx="1210" cy="50" r="1.4" opacity=".7"/><circle cx="1240" cy="160" r="1" opacity=".5"/>
+    <circle cx="1150" cy="300" r="1.2" opacity=".6"/><circle cx="40" cy="360" r="1.3" opacity=".6"/>
+    <circle cx="120" cy="250" r="1" opacity=".5"/><circle cx="660" cy="390" r="1.2" opacity=".5"/>
+    <circle cx="590" cy="250" r="1" opacity=".4"/><circle cx="250" cy="390" r="1.5" opacity=".7"/>
+  </g>
+  <g fill="#ffd866">
+    <path d="M712 236 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" opacity=".9"/>
+    <path d="M1185 105 l2.5 7 7 2.5 -7 2.5 -2.5 7 -2.5 -7 -7 -2.5 7 -2.5z" opacity=".8"/>
+    <path d="M610 72 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z" opacity=".7"/>
+  </g>
+
+  <!-- planet horizon -->
+  <ellipse cx="640" cy="800" rx="900" ry="420" fill="none" stroke="url(#arc)" stroke-width="3" opacity=".9"/>
+  <ellipse cx="640" cy="800" rx="900" ry="420" fill="#0b1230"/>
+
+  <!-- title -->
+  <g font-family="'JetBrains Mono','Fira Code','DejaVu Sans Mono',Menlo,Consolas,monospace">
+    <text x="64" y="118" font-size="20" fill="#7aa7ff" letter-spacing="3">UNOFFICIAL · OPEN SOURCE · MIT</text>
+    <text x="64" y="178" font-size="54" font-weight="700" fill="#ffffff">Antigravity v2</text>
+    <text x="64" y="232" font-size="40" font-weight="700" fill="url(#arc)">Linux auto-installer</text>
+    <text x="64" y="282" font-size="21" fill="#c7d2fe">One command. Official builds. Always up to date.</text>
+  </g>
+
+  <!-- terminal -->
+  <g transform="translate(760 150)">
+    <rect x="6" y="10" width="460" height="200" rx="14" fill="#000" opacity=".35"/>
+    <rect width="460" height="200" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+    <path d="M0 14 a14 14 0 0 1 14 -14 h432 a14 14 0 0 1 14 14 v20 h-460z" fill="#161b22"/>
+    <circle cx="22" cy="17" r="6" fill="#ff5f57"/><circle cx="42" cy="17" r="6" fill="#febc2e"/><circle cx="62" cy="17" r="6" fill="#28c840"/>
+    <g font-family="'JetBrains Mono','Fira Code','DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="15">
+      <text x="20" y="66" fill="#8b949e">$ <tspan fill="#e6edf3">curl -fsSL …/install.sh | bash</tspan></text>
+      <text x="20" y="96" fill="#7aa7ff">==&gt; <tspan fill="#e6edf3">Installing Antigravity</tspan></text>
+      <text x="20" y="122" fill="#3fb950"> ✓  <tspan fill="#c9d1d9">Sandbox, launcher, sign-in</tspan></text>
+      <text x="20" y="148" fill="#3fb950"> ✓  <tspan fill="#c9d1d9">Auto-update: on</tspan></text>
+      <text x="20" y="180" fill="#8b949e">$ <tspan fill="#3fb950">█</tspan></text>
+    </g>
+  </g>
+
+  <!-- floating package -->
+  <ellipse cx="1010" cy="80" rx="120" ry="70" fill="url(#glow)"/>
+  <path d="M975 148 L1045 148 L1062 112 L958 112 Z" fill="url(#trail)" opacity=".8"/>
+  <g transform="translate(1010 84) rotate(-8)">
+    <path d="M-46 -18 L0 -40 L46 -18 L0 4 Z" fill="#ffe08a"/>
+    <path d="M-46 -18 L0 4 L0 56 L-46 34 Z" fill="url(#box)"/>
+    <path d="M46 -18 L0 4 L0 56 L46 34 Z" fill="#c9771f"/>
+    <path d="M-23 -29 L23 -7 L23 14 L15 10 L15 -3 L-31 -25 Z" fill="#fff4cc" opacity=".85"/>
+    <text x="-38" y="30" transform="skewY(25)" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="11" font-weight="700" fill="#5a3410">.tar.gz</text>
+  </g>
+  <g stroke="#7aa7ff" stroke-width="3" stroke-linecap="round" opacity=".6">
+    <line x1="935" y1="104" x2="935" y2="134"/><line x1="1088" y1="96" x2="1088" y2="124"/>
+  </g>
+</svg>

@@ -4,6 +4,10 @@
 # with --user into a throwaway $HOME.
 #
 #   bash tests/run.sh
+#
+# `cond && pass || fail` is safe here: pass never fails.
+# shellcheck disable=SC2015,SC2181
+# shellcheck source-path=SCRIPTDIR/..
 set -uo pipefail
 
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
@@ -26,7 +30,7 @@ fn() {
   (
     # Respect a caller's AGI_TEST=0 (the file:// rejection test needs it).
     export AGI_SOURCED=1 AGI_TEST="${AGI_TEST:-1}" NO_COLOR=1
-    # shellcheck source=../install.sh
+    # shellcheck source=install.sh
     source "$SCRIPT"
     "$@"
   )

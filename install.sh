@@ -30,7 +30,6 @@ OPT_YES=0
 OPT_FORCE=0
 OPT_PURGE=0
 OPT_QUIET=0
-OPT_NO_CLI_LINK=0
 
 WORKDIR=""
 SELF_INSTALLED=0
@@ -196,6 +195,7 @@ ensure_sudo() {
   have sudo || die "system install needs root: install sudo, run as root, or use --user."
   if ! sudo -n true 2>/dev/null; then
     info "Administrator rights are needed to install into /opt."
+    # shellcheck disable=SC2024 # the prompt must read the terminal, not the piped script
     sudo -v </dev/tty || die "could not get administrator rights (or use --user)."
   fi
 }
@@ -441,8 +441,10 @@ EOF
       warn "$(product_label "$product") may refuse to start until you run: $AGI_CMD fix-sandbox --user"
       return 0
     fi
-    sudo install -m 0644 -- "$tmp" "$profile" && sudo apparmor_parser -r "$profile" \
-      || { warn "could not load the AppArmor profile; $(product_label "$product") may not start."; return 0; }
+    if ! { sudo install -m 0644 -- "$tmp" "$profile" && sudo apparmor_parser -r "$profile"; }; then
+      warn "could not load the AppArmor profile; $(product_label "$product") may not start."
+      return 0
+    fi
   else
     priv install -m 0644 -- "$tmp" "$profile"
     priv apparmor_parser -r "$profile" || warn "could not load $profile; $(product_label "$product") may not start."
@@ -452,7 +454,8 @@ EOF
 
 configure_sandbox() {
   local product=$1 dest=$2
-  local exe="$dest/$(product_exe "$product")" helper="$dest/chrome-sandbox"
+  local exe helper="$dest/chrome-sandbox"
+  exe="$dest/$(product_exe "$product")"
   if needs_apparmor_profile; then
     install_apparmor_profile "$product" "$exe"
   elif [[ $AGI_SKIP_SANDBOX != 1 && $(sysctl_value unprivileged_userns_clone) == 0 && -f $helper ]]; then
@@ -763,18 +766,18 @@ uninstall_product() {
 }
 
 purge_user_data() {
-  local product=$1 home dirs d found=()
+  local product=$1 home dirs d existing=()
   home=$(target_home) || { warn "no desktop user to purge settings for"; return 0; }
   case $product in
     desktop) dirs=("$home/.config/Antigravity" "$home/.cache/Antigravity" "$home/.cache/antigravity-updater") ;;
     ide) dirs=("$home/.config/Antigravity IDE" "$home/.antigravity-ide") ;;
   esac
-  for d in "${dirs[@]}"; do [[ -e $d ]] && found+=("$d"); done
-  [[ ${#found[@]} -gt 0 ]] || return 0
+  for d in "${dirs[@]}"; do [[ -e $d ]] && existing+=("$d"); done
+  [[ ${#existing[@]} -gt 0 ]] || return 0
   warn "This deletes your $(product_label "$product") settings, sign-in and local data:"
-  printf '      %s\n' "${found[@]}" >&2
+  printf '      %s\n' "${existing[@]}" >&2
   if ask "Delete them?" n; then
-    as_target_user rm -rf -- "${found[@]}"
+    as_target_user rm -rf -- "${existing[@]}"
     ok "Deleted $(product_label "$product") user data"
   fi
 }
